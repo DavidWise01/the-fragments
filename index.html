@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Fragments · Sappho survives as lacunae · LESBOS · ROOT0</title>
+<meta name="description" content="Sappho survives almost entirely as torn papyrus — ~650 fragments, one complete poem. A live 2D-canvas of the surviving Greek on eroding papyrus: drag the erosion to watch a poem fall into gaps, toggle the scholars' bracketed reconstructions, and see that for us the lacuna IS the poem. Real surviving Greek, my own plain glosses. LESBOS / ROOT0.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cardo:ital@0;1&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Spectral:ital,wght@0,300;0,400;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{ --sea:#170d20; --sea2:#1f1330; --lead:#9a98a6; --parch:#e9e2d2; --gold:#d9a441;
+    --verd:#73b3a3; --murex:#c2557f; --murex-d:#9a3d68; --ink:#e9e2d2; --dim:#8f7f92;
+    --line:rgba(194,85,127,.18); }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{min-height:100%;background:var(--sea);color:var(--ink);font-family:Spectral,Georgia,serif;line-height:1.66;
+    background-image:radial-gradient(ellipse 62% 44% at 18% 4%,rgba(194,85,127,.10),transparent 60%),radial-gradient(ellipse 50% 40% at 88% 96%,rgba(115,179,163,.06),transparent 60%)}
+  .wrap{max-width:860px;margin:0 auto;padding:0 22px 84px;position:relative}
+  .top{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.06em;padding:12px 0;border-bottom:1px solid var(--line);color:var(--murex)}
+  .top a{color:var(--murex);text-decoration:none} .top a:hover{color:var(--gold)}
+  header{padding:40px 0 6px}
+  .eyebrow{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--murex)}
+  h1{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(34px,7vw,62px);color:var(--parch);line-height:1.02;margin:10px 0 6px;letter-spacing:.5px}
+  .gk{font-family:'Cardo',serif}
+  .lede{font-size:clamp(16px,2.3vw,20px);font-weight:300;max-width:66ch;color:var(--ink);margin-top:10px}
+  .lede b{color:var(--gold);font-weight:400} .lede .m{color:var(--murex)}
+  section{margin:38px 0 0}
+  h2{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--murex);margin:0 0 12px;border-top:1px solid var(--line);padding-top:16px}
+  canvas{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:3px;background:#120a18;touch-action:none;cursor:crosshair}
+  .chips{display:flex;gap:7px;flex-wrap:wrap;margin:14px 0 0}
+  .chip{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--dim);border:1px solid var(--line);border-radius:16px;padding:5px 12px;cursor:pointer;transition:.14s}
+  .chip:hover{border-color:var(--murex);color:var(--murex)} .chip.on{border-color:var(--gold);color:var(--gold);background:rgba(217,164,65,.06)}
+  .controls{display:flex;gap:20px;flex-wrap:wrap;align-items:center;margin:14px 0 0;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--dim)}
+  .controls label{display:flex;flex-direction:column;gap:4px;min-width:230px;flex:1}
+  .controls .val{color:var(--gold)}
+  input[type=range]{accent-color:var(--murex);width:100%}
+  button{font-family:'IBM Plex Mono',monospace;font-size:12px;padding:8px 13px;border-radius:3px;cursor:pointer;color:var(--murex);background:transparent;border:1px solid var(--murex)}
+  button:hover{background:rgba(194,85,127,.08)} button.on{background:rgba(217,164,65,.1);color:var(--gold);border-color:var(--gold)}
+  .gloss{margin-top:16px;padding:16px 18px;border:1px solid var(--line);border-radius:3px;background:rgba(194,85,127,.03)}
+  .gloss .en{font-family:'Cormorant Garamond',serif;font-size:19px;font-style:italic;color:var(--parch);line-height:1.5}
+  .gloss .src{font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--dim);margin-top:10px;letter-spacing:.02em}
+  .gloss .src b{color:var(--verd)}
+  .prose{font-size:15px;color:var(--ink);max-width:70ch} .prose b{color:var(--gold)} .prose .m{color:var(--murex)}
+  .honest{border:1px solid var(--line);border-radius:3px;padding:15px 17px;margin-top:8px;background:rgba(194,85,127,.03)}
+  .honest h3{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--murex);margin:0 0 8px}
+  .honest p{font-size:13.5px;color:var(--dim);margin:6px 0} .honest b{color:var(--ink)}
+  footer{margin-top:44px;border-top:1px solid var(--line);padding-top:18px;text-align:center;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--dim);line-height:1.9}
+  footer a{color:var(--murex)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top"><a href="https://davidwise01.github.io/ud0/">◄ UD0</a> · I THINK I'M IN LESBIANS WITH YOU · <a href="https://davidwise01.github.io/the-tenth-muse/">the tenth muse ↗</a></div>
+  <header>
+    <div class="eyebrow">Sappho · what the fire and the worm left</div>
+    <h1>The Fragments</h1>
+    <p class="lede">Nine books of Sappho. What reached us: <b>one</b> complete poem and some <b>650 scraps</b> — a word quoted by a grammarian to prove a point of dialect, a strip of papyrus pulled from a mummy's wrapping, a line torn where the reed gave way. Her poetry survives almost entirely as <span class="m">lacunae</span>: the holes where the text used to be. Drag the erosion below and watch a poem fall into gaps. The unsettling truth this domain keeps circling: for us, <b>the gap is not damage to the poem — it is the poem.</b></p>
+  </header>
+
+  <section>
+    <h2>the papyrus · drag the erosion, toggle the guesses</h2>
+    <div class="chips" id="chips"></div>
+    <canvas id="cv" width="820" height="440" aria-label="a Sappho fragment on eroding papyrus, with lacunae where the text is lost"></canvas>
+    <div class="controls">
+      <label>how much survives — <span class="val" id="eVal">100%</span><input type="range" id="eRange" min="0" max="100" step="1" value="100"></label>
+      <button id="reconBtn">◊ show scholars' reconstruction</button>
+      <button id="metreBtn">– ‿ show the metre</button>
+    </div>
+    <div class="gloss">
+      <div class="en" id="gEn"></div>
+      <div class="src" id="gSrc"></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>reading a wound</h2>
+    <p class="prose">A modern edition of Sappho is mostly <b>brackets</b>. Square brackets <span class="gk">[ ]</span> mark where the papyrus is physically gone; a dotted letter marks ink too faint to be sure of; a word in the margin is an editor's guess, offered and flagged. Scholars close some gaps the way this whole corpus talks about closing gaps — by <b>redundancy</b>: the same line survives in two torn sources with the holes in different places, and laid over each other they nearly complete. The <b>metre</b> helps too: the Sapphic stanza is so strict that a lost word has a known number of long and short beats, which rules most guesses out. But most gaps never close. And the strange gift of that is this: a poet of overwhelming presence reaches us as mostly <span class="m">absence</span> — and it is exactly the absence that makes her feel infinite. You finish the line yourself, and the line you finish is yours. <b>That</b> is why she has never stopped being read. Ties <a href="https://davidwise01.github.io/lacuna/">LACUNA</a> and the corpus's <a href="https://davidwise01.github.io/the-gap-live/">gap</a>.</p>
+    <div class="honest">
+      <h3>honest note</h3>
+      <p><b>Real:</b> the Greek shown is the actual surviving text (public-domain editions), with its real lacunae — where you see a gap, the papyrus really is torn there. The <b>erosion</b> slider is a demonstration of loss, not history (it drops surviving words to show how a poem becomes scraps); the true survival is the 100% state, which for most fragments is already mostly holes.</p>
+      <p><b>Flagged:</b> the "reconstruction" toggle shows <i>plausible</i> editorial supplements, dimmed and bracketed — these are scholarly conjecture, never certain, and some fragments (the midnight poem, fr. 168B) are of <i>disputed</i> authorship, marked here. The English is my own plain gloss — no copyrighted translation is reproduced; the Greek is quoted, the meaning paraphrased. To render a loss faithfully is real work; it is not a recovered poem.</p>
+    </div>
+  </section>
+
+  <footer>
+    THE FRAGMENTS · LESBOS ("I think I'm in lesbians with you") · David Lee Wise / ROOT0, with AVAN · CC-BY-ND-4.0<br>
+    <a href="https://davidwise01.github.io/ud0/">← the biosphere</a> · <a href="https://davidwise01.github.io/the-tenth-muse/">the tenth muse</a> · <a href="https://davidwise01.github.io/sounds-of-lesbos/">hear the lyre</a>
+  </footer>
+</div>
+<script>
+"use strict";
+(function(){
+  var cv=document.getElementById("cv"), ctx=cv.getContext("2d");
+  var W=cv.width, H=cv.height;
+  // Each fragment: lines of tokens. t=word (surviving), g=known GAP in the papyrus (always shown as […]),
+  // r=an editor's plausible supplement (shown only with reconstruction on). "survival" drops random t's to gaps.
+  // Greek is real surviving text; gloss is my own plain paraphrase (no copyrighted translation).
+  var FRAGS=[
+    {id:"fr. 147", en:"someone, I say, will remember us — even in some other time.",
+     src:"Sappho fr. 147 (quoted by Dio Chrysostom). One of the few nearly-whole lines: her own wager on survival.",
+     lines:[[["μνάσεσθαί","t"],["τινα","t"],["φαῖμι","t"],["†καὶ ἕτερον†","g"],["ἀμμέων","t"]]]},
+    {id:"fr. 168B", en:"the moon has set, and the Pleiades; it is midnight, the hour goes by, and I lie down alone.", disputed:true,
+     src:"“the midnight poem,” fr. 168B — authorship DISPUTED (may be Hellenistic). Complete, and unbearably quiet.",
+     lines:[[["δέδυκε","t"],["μὲν","t"],["ἀ","t"],["σελάννα","t"]],
+            [["καὶ","t"],["Πληΐαδες·","t"],["μέσαι","t"],["δὲ","t"]],
+            [["νύκτες,","t"],["παρὰ","t"],["δ᾽","t"],["ἔρχετ᾽","t"],["ὤρα,","t"]],
+            [["ἔγω","t"],["δὲ","t"],["μόνα","t"],["κατεύδω","t"]]]},
+    {id:"fr. 16", en:"some say a host of horsemen, some of foot-soldiers, some of ships is the most beautiful thing on the dark earth — but I say it is whatever one loves.",
+     src:"fr. 16 (P.Oxy. 1231), the “Anactoria” poem. The papyrus is torn all through it; the priamel survives.",
+     lines:[[["ο]ἰ","t"],["μὲν","t"],["ἰππήων","t"],["στρότον","t"],["οἰ","t"],["δὲ","t"],["πέσδων","t"]],
+            [["οἰ","t"],["δὲ","t"],["νάων","t"],["φαῖσ᾽","t"],["ἐπ[ὶ]","t"],["γᾶν","t"],["μέλαι[ν]αν","t"]],
+            [["ἔ]μμεναι","t"],["κάλλιστον,","t"],["ἔγω","t"],["δὲ","t"],["κῆν᾽","t"],["ὄτ-","t"]],
+            [["τω","t"],["τις","t"],["ἔραται","t"],["[.....]","g"],["παν","r"]]]},
+    {id:"fr. 94", en:"honestly, I wish I were dead. She, weeping, was leaving me,",
+     src:"fr. 94 (P.Berol. 9722). A parting remembered; the top of the poem is lost, so it opens mid-grief.",
+     lines:[[["[","g"],["]","g"],["τεθνάκην","t"],["δ᾽","t"],["ἀδόλως","t"],["θέλω·","t"]],
+            [["ἄ","t"],["με","t"],["ψισδομένα","t"],["κατελίμπανεν","t"],["[...]","g"]]]}
+  ];
+  var cur=0, erosion=100, recon=false, metre=false, dropSet=new Set();
+
+  function computeDrops(){ // deterministically drop (100-erosion)% of surviving words into gaps
+    dropSet=new Set(); var toks=[];
+    FRAGS[cur].lines.forEach(function(ln,li){ ln.forEach(function(tk,ci){ if(tk[1]==="t") toks.push(li+"_"+ci); }); });
+    // stable pseudo-order by a hash so the same erosion always drops the same words
+    toks.sort(function(a,b){ return (hash(a)%997)-(hash(b)%997); });
+    var nDrop=Math.round(toks.length*(100-erosion)/100);
+    for(var i=0;i<nDrop;i++) dropSet.add(toks[i]);
+  }
+  function hash(s){ var h=2166136261; for(var i=0;i<s.length;i++){ h^=s.charCodeAt(i); h=Math.imul(h,16777619);} return (h>>>0); }
+
+  function fontReady(cb){ if(document.fonts&&document.fonts.ready) document.fonts.ready.then(cb); }
+
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    // papyrus body with torn top/bottom edges
+    var pad=26, top=34, bot=H-30;
+    var grad=ctx.createLinearGradient(0,0,0,H); grad.addColorStop(0,"#cdbf9a"); grad.addColorStop(.5,"#c3b48c"); grad.addColorStop(1,"#b6a67c");
+    ctx.save();
+    ctx.beginPath();
+    ctx.moveTo(pad, top);
+    for(var x=pad;x<=W-pad;x+=18){ ctx.lineTo(x, top + Math.sin(x*0.7+cur)*3 - (hash("t"+x+cur)%5)); }
+    ctx.lineTo(W-pad, bot);
+    for(x=W-pad;x>=pad;x-=18){ ctx.lineTo(x, bot - Math.sin(x*0.5+cur)*3 + (hash("b"+x+cur)%5)); }
+    ctx.closePath(); ctx.fillStyle=grad; ctx.fill();
+    ctx.clip();
+    // papyrus fibres
+    ctx.strokeStyle="rgba(120,100,70,.10)"; ctx.lineWidth=1;
+    for(var fy=top;fy<bot;fy+=5){ ctx.beginPath(); ctx.moveTo(pad,fy); ctx.lineTo(W-pad,fy); ctx.stroke(); }
+    for(var fx=pad;fx<W-pad;fx+=26){ ctx.strokeStyle="rgba(120,100,70,.05)"; ctx.beginPath(); ctx.moveTo(fx,top); ctx.lineTo(fx,bot); ctx.stroke(); }
+    // a few physical holes (lacunae in the material), deterministic per fragment
+    for(var k=0;k<5;k++){ var hx=pad+40+((hash("h"+cur+k)%(W-2*pad-90))), hy=top+40+((hash("v"+cur+k)%(bot-top-80))), hr=8+(hash("r"+cur+k)%16);
+      var hg=ctx.createRadialGradient(hx,hy,1,hx,hy,hr); hg.addColorStop(0,"rgba(18,10,24,.9)"); hg.addColorStop(.7,"rgba(40,26,20,.5)"); hg.addColorStop(1,"rgba(120,100,70,0)");
+      ctx.fillStyle=hg; ctx.beginPath(); ctx.arc(hx,hy,hr,0,7); ctx.fill(); }
+    // burnt right edge
+    var bg=ctx.createLinearGradient(W-pad-40,0,W-pad,0); bg.addColorStop(0,"rgba(60,30,20,0)"); bg.addColorStop(1,"rgba(40,20,14,.5)");
+    ctx.fillStyle=bg; ctx.fillRect(W-pad-40,top,40,bot-top);
+    ctx.restore();
+    // ---- the text ----
+    var lh=Math.min(52,(bot-top-30)/(FRAGS[cur].lines.length+0.5));
+    var y=top+lh*0.9;
+    ctx.textBaseline="alphabetic";
+    FRAGS[cur].lines.forEach(function(ln,li){
+      var x0=pad+22, x=x0;
+      ctx.font="italic "+Math.round(lh*0.5)+"px Cardo, 'Cormorant Garamond', serif";
+      ln.forEach(function(tk,ci){
+        var word=tk[0], kind=tk[1], key=li+"_"+ci;
+        var dropped=(kind==="t" && dropSet.has(key));
+        var w=ctx.measureText(word).width;
+        if(kind==="g" || dropped){
+          // a lacuna: draw a torn gap; if reconstruction on and it's an editor word, show dim bracket
+          var gapw=Math.max(w, 26);
+          ctx.strokeStyle="rgba(18,10,24,.35)"; ctx.setLineDash([2,3]);
+          ctx.strokeRect(x, y-lh*0.42, gapw, lh*0.5); ctx.setLineDash([]);
+          if(recon){ ctx.fillStyle="rgba(120,60,90,.6)"; ctx.font="italic "+Math.round(lh*0.42)+"px Cardo,serif";
+            ctx.fillText(dropped?word:"⟨…⟩", x+2, y); ctx.font="italic "+Math.round(lh*0.5)+"px Cardo,serif"; }
+          x+=gapw+10;
+        } else if(kind==="r"){
+          if(recon){ ctx.fillStyle="rgba(120,60,90,.7)"; ctx.fillText("["+word+"]", x, y); x+=ctx.measureText("["+word+"]").width+10; }
+          else { ctx.strokeStyle="rgba(18,10,24,.3)"; ctx.setLineDash([2,3]); ctx.strokeRect(x,y-lh*0.42,26,lh*0.5); ctx.setLineDash([]); x+=36; }
+        } else {
+          ctx.fillStyle="#2a1b12"; ctx.fillText(word, x, y);
+          if(metre){ // mark long/short under each syllable-ish (coarse: vowel-count heuristic)
+            var syl=(word.match(/[αειουηωάέίόύήώᾶῆῖῦ]/gi)||[]).length||1;
+            ctx.fillStyle="rgba(194,85,127,.8)"; ctx.font="10px 'IBM Plex Mono',monospace";
+            for(var s=0;s<syl;s++) ctx.fillText(s%2?"‿":"–", x+s*8, y+12);
+            ctx.font="italic "+Math.round(lh*0.5)+"px Cardo,serif";
+          }
+          x+=w+10;
+        }
+      });
+      y+=lh;
+    });
+    // caption
+    ctx.fillStyle="rgba(120,100,70,.7)"; ctx.font="12px 'IBM Plex Mono',monospace";
+    ctx.fillText(FRAGS[cur].id+(FRAGS[cur].disputed?"  · authorship disputed":""), pad+22, bot-8);
+  }
+
+  function render(){ computeDrops(); draw();
+    document.getElementById("gEn").textContent = "“"+FRAGS[cur].en+"”";
+    document.getElementById("gSrc").innerHTML = "<b>"+FRAGS[cur].id+"</b> — "+FRAGS[cur].src;
+    document.getElementById("eVal").textContent=erosion+"%";
+  }
+
+  var chips=document.getElementById("chips");
+  FRAGS.forEach(function(f,i){ var c=document.createElement("span"); c.className="chip"+(i===0?" on":""); c.textContent=f.id;
+    c.onclick=function(){ cur=i; chips.querySelectorAll(".chip").forEach(function(x){x.classList.remove("on");}); c.classList.add("on"); render(); };
+    chips.appendChild(c); });
+  document.getElementById("eRange").oninput=function(){ erosion=+this.value; render(); };
+  document.getElementById("reconBtn").onclick=function(){ recon=!recon; this.classList.toggle("on",recon); draw(); };
+  document.getElementById("metreBtn").onclick=function(){ metre=!metre; this.classList.toggle("on",metre); draw(); };
+
+  render();                 // synchronous first paint
+  fontReady(render);        // redraw once Cardo (Greek) is loaded
+})();
+</script>
+</body>
+</html>
